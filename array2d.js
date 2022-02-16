@@ -1,52 +1,97 @@
-// let ampulhetaUm = 0;
-// let ampulhetaDois = 0;
-// let ampulhetaTres = 0;
-// let elements = 0;
-// let retorno = 0;
+let ampulhetaZero = 0;
+let ampulhetaUm = 0;
+let ampulhetaDois = 0;
+let ampulhetaTres = 0;
+let elements;
+let retorno = 0;
 
-// function hourglassSum(arr) {
-//   arr.map((item) => {
-//     const indice = arr.indexOf(item);
-//     for (elements of item) {
-//       const indiceElemento = arr.indexOf(elements);
-//       if (indice <= 2 && indiceElemento <= 2 && elements !== 0) {
-//         ampulhetaUm = ampulhetaUm + elements;
-//       } else if (
-//         indice <= 2 &&
-//         indiceElemento >= 2 &&
-//         indiceElemento <= 4 &&
-//         elements !== 0
-//       ) {
-//         ampulhetaDois = ampulhetaDois + elements;
-//       } else if (
-//         indice <= 2 &&
-//         indiceElemento >= 3 &&
-//         indiceElemento <= 5 &&
-//         elements !== 0
-//       ) {
-//         ampulhetaTres = ampulhetaTres + elements;
-//       }
-//     }
-//     return console.log(ampulhetaUm, ampulhetaDois, ampulhetaTres);
-//   });
-//   if (ampulhetaUm > ampulhetaDois && ampulhetaUm > ampulhetaTres) {
-//     return console.log("Retornei ampulheta 1: ", ampulhetaUm);
-//   } else if (ampulhetaDois > ampulhetaUm && ampulhetaDois > ampulhetaTres) {
-//     return console.log("Retornei ampulheta 2: ", ampulhetaDois);
-//   } else if (ampulhetaTres > ampulhetaUm && ampulhetaDTres > ampulhetaDois) {
-//     return console.log("Retornei ampulheta 2: ", ampulhetaTres);
-//   }
-// }
+function hourglassSum(arr) {
+  arr.map((item) => {
+    const indice = arr.indexOf(item);
+    for (elements of item) {
+      const indiceElemento = item.indexOf(elements);
 
-// console.log(
-//   hourglassSum([
-//     [1, 1, 1, 0, 0, 0],
-//     [0, 1, 0, 0, 0, 0],
-//     [1, 1, 1, 0, 0, 0],
-//     [0, 0, 2, 4, 4, 0],
-//     [0, 0, 0, 2, 0, 0],
-//     [0, 0, 1, 2, 4, 0],
-//   ])
-// );
+      if (
+        indice <= 2 &&
+        indiceElemento >= 0 &&
+        indiceElemento <= 2 &&
+        elements !== 0
+      ) {
+        ampulhetaZero = ampulhetaZero + elements;
+      } else if (
+        indice <= 2 &&
+        indiceElemento >= 1 &&
+        indiceElemento <= 3 &&
+        elements !== 0
+      ) {
+        ampulhetaUm = ampulhetaUm + elements;
+      } else if (
+        indice <= 2 &&
+        indiceElemento >= 2 &&
+        indiceElemento <= 4 &&
+        elements !== 0
+      ) {
+        ampulhetaDois = ampulhetaDois + elements;
+      } else if (
+        indice <= 2 &&
+        indiceElemento >= 3 &&
+        indiceElemento <= 5 &&
+        elements !== 0
+      ) {
+        ampulhetaTres = ampulhetaTres + elements;
+      }
+    }
+    return console.log(ampulhetaUm, ampulhetaDois, ampulhetaTres);
+  });
 
-// 1° o codigo só está dando certo nos 3 primeirps arrays  e na primeira ampulheta
+  let retornoAmpulhetaZero;
+  let retornoAmpulhetaUm;
+  let retornoAmpulhetaUDois;
+  let retornoAmpulhetaTres;
+
+  retornoAmpulhetaZero =
+    ampulhetaZero > ampulhetaUm &&
+    ampulhetaZero > ampulhetaDois &&
+    ampulhetaZero > ampulhetaTres
+      ? (retornoAmpulhetaZero = ampulhetaZero)
+      : false;
+
+  retornoAmpulhetaUm =
+    ampulhetaUm > ampulhetaZero &&
+    ampulhetaUm > ampulhetaDois &&
+    ampulhetaUm > ampulhetaTres
+      ? (retornoAmpulhetaUm = ampulhetaUm)
+      : false;
+
+  retornoAmpulhetaUDois =
+    ampulhetaDois > ampulhetaZero &&
+    ampulhetaDois > ampulhetaUm &&
+    ampulhetaDois > ampulhetaTres
+      ? (retornoAmpulhetaUDois = ampulhetaDois)
+      : false;
+
+  retornoAmpulhetaTres =
+    ampulhetaTres > ampulhetaZero &&
+    ampulhetaTres > ampulhetaUm &&
+    ampulhetaUm > ampulhetaDois
+      ? (retornoAmpulhetaTres = ampulhetaTres)
+      : false;
+
+  return (
+    retornoAmpulhetaZero ||
+    retornoAmpulhetaUm ||
+    retornoAmpulhetaUDois ||
+    retornoAmpulhetaTres
+  );
+}
+
+console.log(
+  hourglassSum([
+    [1, 1, 1, 0, 0, 0],
+    [0, 1, 0, 0, 0, 0],
+    [1, 1, 1, 0, 0, 0],
+    [0, 0, 2, 4, 4, 0],
+    [0, 0, 0, 2, 0, 0],
+    [0, 0, 1, 2, 4, 0],
+  ])
+);
