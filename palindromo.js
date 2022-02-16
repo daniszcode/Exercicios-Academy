@@ -9,11 +9,7 @@ function palindrome(palavra) {
   const splits = strMinuscula.split("", strMinuscula.lenth);
   const strReverse = splits.reverse().join("");
 
-  if (strReverse === strMinuscula) {
-    return true;
-  } else {
-    return false;
-  }
+  return strReverse === strMinuscula ? true : false;
 }
 
 console.log(palindrome("ana")); //=> true
