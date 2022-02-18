@@ -41,7 +41,12 @@ function hourglassSum(arr) {
         ampulhetaTres = ampulhetaTres + elements;
       }
     }
-    return console.log(ampulhetaUm, ampulhetaDois, ampulhetaTres);
+    return console.log(
+      ampulhetaZero,
+      ampulhetaUm,
+      ampulhetaDois,
+      ampulhetaTres
+    );
   });
 
   let retornoAmpulhetaZero;
