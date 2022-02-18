@@ -9,9 +9,6 @@ function countWords(palavra) {
 
   strSeparada.map((element) => {
     const comparacao = dictionary.hasOwnProperty(element);
-    console.log("comparacao: ", comparacao);
-    console.log("dictyonary: ", dictionary);
-
     if (comparacao === true) {
       dictionary[element] = dictionary[element] + 1;
     } else {
@@ -20,4 +17,4 @@ function countWords(palavra) {
   });
   return dictionary;
 }
-console.log(countWords("arroz feijão arroz c#")); // => { doo: 3, bee: 2 }
+console.log(countWords("Doo bee doo bee doo")); // => { doo: 3, bee: 2 }
