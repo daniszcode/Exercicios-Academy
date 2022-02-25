@@ -1,12 +1,12 @@
 let players = [
   [
     [
-      ["Harry Potter", "PE"],
-      ["Ronny Wesley", "TE"],
+      ["Harry", "PE"],
+      ["Ronny", "TE"],
     ],
     [
-      ["Hermione Granger", "PA"],
-      ["Luna Lovegood", "TE"],
+      ["Hermione", "PA"],
+      ["Luna", "TE"],
     ],
   ],
 
@@ -33,51 +33,81 @@ let players = [
   ],
 ];
 
-for (let c = 0; c < players.length; c++) {
-  console.log(c);
-  console.log("Esses são os players do for Externo", players[c]);
+let playersWin = [[]];
 
-  for (let player of players) {
-    console.log("Esses são os player do for INterno: ", player[c]);
-    console.log("Posição 0: ", player[0][0], "posição 1: ", player[0][1]);
+const strFormate = (str) => {
+  const string = str.toString().toLowerCase();
+  return string;
+};
 
-    const regrasDoJogo = (jogoPlayerUm, jogoPlayerDois) => {
-      if (
-        (jogoPlayerUm === "pa" && jogoPlayerDois === "pe") ||
-        (jogoPlayerUm === "te" && jogoPlayerDois === "pa") ||
-        (jogoPlayerUm === "pe" && jogoPlayerDois === "te")
-      ) {
-        return console.log(
-          "O Jogador",
-          player[0][0],
-          "venceu!",
-          jogoPlayerUm,
-          "Ganha de ",
-          jogoPlayerDois
-        );
-      }
+//1° Rodada ########################
 
-      if (
-        (jogoPlayerDois === "pa" && jogoPlayerUm === "pe") ||
-        (jogoPlayerDois === "te" && jogoPlayerUm === "pa") ||
-        (jogoPlayerDois === "pe" && jogoPlayerUm === "te")
-      ) {
-        return console.log(
-          "O Jogador",
-          player[1][0],
-          "venceu!",
-          jogoPlayerDois,
-          "Ganha de ",
-          jogoPlayerUm
-        );
-      }
+for (let player of players) {
+  const regrasDoJogo = (
+    jogoPlayerUm = player[0][0][1],
+    jogoPlayerDois = player[0][1][1],
+    jogoPlayerTres = player[1][0][1],
+    jogoPlayerQuatro = player[1][1][1]
+  ) => {
+    if (
+      (strFormate(jogoPlayerUm) === "pa" &&
+        strFormate(jogoPlayerDois) === "pe") ||
+      (strFormate(jogoPlayerUm) === "te" &&
+        strFormate(jogoPlayerDois) === "pa") ||
+      (strFormate(jogoPlayerUm) === "pe" && strFormate(jogoPlayerDois) === "te")
+    ) {
+      playersWin.push(player[0][0]);
+    }
+    if (
+      (strFormate(jogoPlayerTres) === "pa" &&
+        strFormate(jogoPlayerQuatro) === "pe") ||
+      (strFormate(jogoPlayerTres) === "te" &&
+        strFormate(jogoPlayerQuatro) === "pa") ||
+      (strFormate(jogoPlayerTres) === "pe" &&
+        strFormate(jogoPlayerQuatro) === "te")
+    ) {
+      playersWin.push(player[1][0]);
+    }
+    if (
+      (strFormate(jogoPlayerDois) === "pa" &&
+        strFormate(jogoPlayerUm) === "pe") ||
+      (strFormate(jogoPlayerDois) === "te" &&
+        strFormate(jogoPlayerUm) === "pa") ||
+      (strFormate(jogoPlayerDois) === "pe" && strFormate(jogoPlayerUm) === "te")
+    ) {
+      playersWin.push(player[1][0]);
+    }
+    if (
+      (strFormate(jogoPlayerQuatro) === "pa" &&
+        strFormate(jogoPlayerTres) === "pe") ||
+      (strFormate(jogoPlayerQuatro) === "te" &&
+        strFormate(jogoPlayerTres) === "pa") ||
+      (strFormate(jogoPlayerQuatro) === "pe" &&
+        strFormate(jogoPlayerTres) === "te")
+    ) {
+      playersWin.push(player[1][1]);
+    }
 
-      if (jogoPlayerUm === jogoPlayerDois) {
-        return console.log("O Jogador", player[0][0], "venceu!");
-      }
-
-      return console.log(regrasDoJogo(player[0][0], player[0][1]));
-    };
-    console.log(regrasDoJogo(player[0][0], player[0][1]));
-  }
+    if (jogoPlayerUm === jogoPlayerDois) {
+      playersWin.push(player[0][0]);
+      // console.log("O Jogador", player[0][0], "venceu!");
+    }
+    return playersWin;
+  };
+  console.log("Vencedores da primeira rodada: ", regrasDoJogo());
 }
+
+// Segunda Rodada ##############################
+
+let playersWinBatalhaDois = [[]];
+playersWin.map((player) => {
+  console.log("player do map ", player);
+  const indice = playersWin.indexOf(player);
+  console.log("indice", indice);
+  //   if (indice <= 2) {
+  //     batalha.push(player);
+  //     console.log("Batalha: ", batalha);
+  //     regrasDoJogo(batalha[2], batalha[3]);
+});
+
+// Final ####################
