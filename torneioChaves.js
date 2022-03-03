@@ -99,15 +99,91 @@ for (let player of players) {
 
 // Segunda Rodada ##############################
 
-let playersWinBatalhaDois = [[]];
 playersWin.map((player) => {
-  console.log("player do map ", player);
-  const indice = playersWin.indexOf(player);
-  console.log("indice", indice);
-  //   if (indice <= 2) {
-  //     batalha.push(player);
-  //     console.log("Batalha: ", batalha);
-  //     regrasDoJogo(batalha[2], batalha[3]);
+  console.log("player: ", player);
+  console.log("playersWin: ", playersWin);
+
+  let playersWinBatalhaDois = [[]];
+
+  function regrasDoJogo(
+    jogoPlayerUm = playersWin[1][1],
+    jogoPlayerDois = playersWin[2][1],
+    jogoPlayerTres = playersWin[3][1],
+    jogoPlayerQuatro = playersWin[4][1],
+    jogoPlayerCinco = playersWin[5][1],
+    jogoPlayerSeis = playersWin[6][1]
+  ) {
+    const strFormate = (str) => {
+      const string = str.toString().toLowerCase();
+      return string;
+    };
+
+    console.log("jogoPlayerUm: @@@@@", jogoPlayerUm);
+    if (
+      (strFormate(jogoPlayerUm) === "pa" &&
+        strFormate(jogoPlayerDois) === "pe") ||
+      (strFormate(jogoPlayerUm) === "te" &&
+        strFormate(jogoPlayerDois) === "pa") ||
+      (strFormate(jogoPlayerUm) === "pe" && strFormate(jogoPlayerDois) === "te")
+    ) {
+      playersWinBatalhaDois.push(playersWin[1][0]);
+    }
+    if (
+      (strFormate(jogoPlayerTres) === "pa" &&
+        strFormate(jogoPlayerQuatro) === "pe") ||
+      (strFormate(jogoPlayerTres) === "te" &&
+        strFormate(jogoPlayerQuatro) === "pa") ||
+      (strFormate(jogoPlayerTres) === "pe" &&
+        strFormate(jogoPlayerQuatro) === "te")
+    ) {
+      playersWinBatalhaDois.push(playersWin[3][0]);
+    }
+    if (
+      (strFormate(jogoPlayerDois) === "pa" &&
+        strFormate(jogoPlayerUm) === "pe") ||
+      (strFormate(jogoPlayerDois) === "te" &&
+        strFormate(jogoPlayerUm) === "pa") ||
+      (strFormate(jogoPlayerDois) === "pe" && strFormate(jogoPlayerUm) === "te")
+    ) {
+      playersWinBatalhaDois.push(playersWin[2][0]);
+    }
+    if (
+      (strFormate(jogoPlayerQuatro) === "pa" &&
+        strFormate(jogoPlayerTres) === "pe") ||
+      (strFormate(jogoPlayerQuatro) === "te" &&
+        strFormate(jogoPlayerTres) === "pa") ||
+      (strFormate(jogoPlayerQuatro) === "pe" &&
+        strFormate(jogoPlayerTres) === "te")
+    ) {
+      playersWinBatalhaDois.push(playersWin[4][0]);
+    }
+    if (
+      (strFormate(jogoPlayerCinco) === "pa" &&
+        strFormate(jogoPlayerSeis) === "pe") ||
+      (strFormate(jogoPlayerCinco) === "te" &&
+        strFormate(jogoPlayerSeis) === "pa") ||
+      (strFormate(jogoPlayerCinco) === "pe" &&
+        strFormate(jogoPlayerSeis) === "te")
+    ) {
+      playersWinBatalhaDois.push(playersWin[5][0]);
+    }
+    if (
+      (strFormate(jogoPlayerSeis) === "pa" &&
+        strFormate(jogoPlayerCinco) === "pe") ||
+      (strFormate(jogoPlayerSeis) === "te" &&
+        strFormate(jogoPlayerCinco) === "pa") ||
+      (strFormate(jogoPlayerSeis) === "pe" &&
+        strFormate(jogoPlayerCinco) === "te")
+    ) {
+      playersWinBatalhaDois.push(playersWin[6][0]);
+    }
+    // if (strFormate(jogoPlayerUm) === strFormate(jogoPlayerDois)) {
+    //   playersWinBatalhaDois.push(player[0][0]);
+    //   // console.log("O Jogador", player[0][0], "venceu!");
+    // }
+    return playersWinBatalhaDois;
+  }
+  console.log("Vencedores da segunda rodada: ", regrasDoJogo());
 });
 
 // Final ####################
