@@ -100,10 +100,10 @@ for (let player of players) {
 // Segunda Rodada ##############################
 
 playersWin.map((player) => {
-  console.log("player: ", player);
-  console.log("playersWin: ", playersWin);
+  // console.log("player: ", player);
+  // console.log("playersWin: ", playersWin);
 
-  let playersWinBatalhaDois = [[]];
+  let playersWinBatalhaDois = [];
 
   function regrasDoJogo(
     jogoPlayerUm = playersWin[1][1],
@@ -118,7 +118,7 @@ playersWin.map((player) => {
       return string;
     };
 
-    console.log("jogoPlayerUm: @@@@@", jogoPlayerUm);
+    // console.log("jogoPlayerUm: @@@@@", jogoPlayerUm);
     if (
       (strFormate(jogoPlayerUm) === "pa" &&
         strFormate(jogoPlayerDois) === "pe") ||

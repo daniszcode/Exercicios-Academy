@@ -76,7 +76,11 @@
     border: none;
     width: 53px;
     height: 45px;
-    
+    cursor: pointer;
+}
+.buttoun:hover {
+    background: #D6AFAF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .buttoun--clean {
     background-color: #D6AFAF;
@@ -84,6 +88,11 @@
     border: none;
     width: 65px;
     height: 102px;
+}
+.buttoun--clean:hover {
+        background: #D6AFAF;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
 }
 .box-buttoun--clean {
     display: flex;
