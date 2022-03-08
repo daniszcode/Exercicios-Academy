@@ -99,20 +99,19 @@ for (let player of players) {
 
 // Segunda Rodada ##############################
 
+let playersWinBatalhaDois = [];
 playersWin.map((player) => {
   // console.log("player: ", player);
   // console.log("playersWin: ", playersWin);
 
-  let playersWinBatalhaDois = [];
-
-  function regrasDoJogo(
+  const regrasDoJogo = (
     jogoPlayerUm = playersWin[1][1],
     jogoPlayerDois = playersWin[2][1],
     jogoPlayerTres = playersWin[3][1],
     jogoPlayerQuatro = playersWin[4][1],
     jogoPlayerCinco = playersWin[5][1],
     jogoPlayerSeis = playersWin[6][1]
-  ) {
+  ) => {
     const strFormate = (str) => {
       const string = str.toString().toLowerCase();
       return string;
@@ -126,7 +125,7 @@ playersWin.map((player) => {
         strFormate(jogoPlayerDois) === "pa") ||
       (strFormate(jogoPlayerUm) === "pe" && strFormate(jogoPlayerDois) === "te")
     ) {
-      playersWinBatalhaDois.push(playersWin[1][0]);
+      playersWinBatalhaDois.push([playersWin[1][0], playersWin[1][1]]);
     }
     if (
       (strFormate(jogoPlayerTres) === "pa" &&
@@ -136,7 +135,7 @@ playersWin.map((player) => {
       (strFormate(jogoPlayerTres) === "pe" &&
         strFormate(jogoPlayerQuatro) === "te")
     ) {
-      playersWinBatalhaDois.push(playersWin[3][0]);
+      playersWinBatalhaDois.push([playersWin[3][0], playersWin[3][1]]);
     }
     if (
       (strFormate(jogoPlayerDois) === "pa" &&
@@ -145,7 +144,7 @@ playersWin.map((player) => {
         strFormate(jogoPlayerUm) === "pa") ||
       (strFormate(jogoPlayerDois) === "pe" && strFormate(jogoPlayerUm) === "te")
     ) {
-      playersWinBatalhaDois.push(playersWin[2][0]);
+      playersWinBatalhaDois.push([playersWin[2][0], playersWin[2][1]]);
     }
     if (
       (strFormate(jogoPlayerQuatro) === "pa" &&
@@ -155,7 +154,7 @@ playersWin.map((player) => {
       (strFormate(jogoPlayerQuatro) === "pe" &&
         strFormate(jogoPlayerTres) === "te")
     ) {
-      playersWinBatalhaDois.push(playersWin[4][0]);
+      playersWinBatalhaDois.push([playersWin[4][0], playersWin[4][1]]);
     }
     if (
       (strFormate(jogoPlayerCinco) === "pa" &&
@@ -165,7 +164,7 @@ playersWin.map((player) => {
       (strFormate(jogoPlayerCinco) === "pe" &&
         strFormate(jogoPlayerSeis) === "te")
     ) {
-      playersWinBatalhaDois.push(playersWin[5][0]);
+      playersWinBatalhaDois.push([playersWin[5][0], playersWin[5][1]]);
     }
     if (
       (strFormate(jogoPlayerSeis) === "pa" &&
@@ -175,15 +174,95 @@ playersWin.map((player) => {
       (strFormate(jogoPlayerSeis) === "pe" &&
         strFormate(jogoPlayerCinco) === "te")
     ) {
-      playersWinBatalhaDois.push(playersWin[6][0]);
+      playersWinBatalhaDois.push([playersWin[6][0], playersWin[6][1]]);
     }
-    // if (strFormate(jogoPlayerUm) === strFormate(jogoPlayerDois)) {
-    //   playersWinBatalhaDois.push(player[0][0]);
-    //   // console.log("O Jogador", player[0][0], "venceu!");
-    // }
+
     return playersWinBatalhaDois;
-  }
+  };
   console.log("Vencedores da segunda rodada: ", regrasDoJogo());
+});
+let playersWinBatalhaTres = [];
+
+playersWinBatalhaDois.map((player) => {
+  console.log("players batalha 3:", player);
+
+  const regrasDoJogo = (
+    jogoPlayerUm = playersWinBatalhaDois[0][1],
+    jogoPlayerDois = playersWinBatalhaDois[1][1],
+    jogoPlayerTres = playersWinBatalhaDois[2][1],
+    jogoPlayerQuatro = false,
+    jogoPlayerCinco = false,
+    jogoPlayerSeis = false
+  ) => {
+    const strFormate = (str) => {
+      const string = str.toString().toLowerCase();
+      return string;
+    };
+
+    // console.log("jogoPlayerUm: @@@@@", jogoPlayerDois);
+    if (
+      (strFormate(jogoPlayerUm) === "pa" &&
+        strFormate(jogoPlayerDois) === "pe") ||
+      (strFormate(jogoPlayerUm) === "te" &&
+        strFormate(jogoPlayerDois) === "pa") ||
+      (strFormate(jogoPlayerUm) === "pe" && strFormate(jogoPlayerDois) === "te")
+    ) {
+      playersWinBatalhaTres.push([playersWin[1][0], playersWin[1][1]]);
+    }
+    if (
+      (strFormate(jogoPlayerTres) === "pa" &&
+        strFormate(jogoPlayerQuatro) === "pe") ||
+      (strFormate(jogoPlayerTres) === "te" &&
+        strFormate(jogoPlayerQuatro) === "pa") ||
+      (strFormate(jogoPlayerTres) === "pe" &&
+        strFormate(jogoPlayerQuatro) === "te")
+    ) {
+      playersWinBatalhaTres.push([playersWin[3][0], playersWin[3][1]]);
+    }
+    if (
+      (strFormate(jogoPlayerDois) === "pa" &&
+        strFormate(jogoPlayerUm) === "pe") ||
+      (strFormate(jogoPlayerDois) === "te" &&
+        strFormate(jogoPlayerUm) === "pa") ||
+      (strFormate(jogoPlayerDois) === "pe" && strFormate(jogoPlayerUm) === "te")
+    ) {
+      playersWinBatalhaTres.push([playersWin[2][0], playersWin[2][1]]);
+    }
+    if (
+      (strFormate(jogoPlayerQuatro) === "pa" &&
+        strFormate(jogoPlayerTres) === "pe") ||
+      (strFormate(jogoPlayerQuatro) === "te" &&
+        strFormate(jogoPlayerTres) === "pa") ||
+      (strFormate(jogoPlayerQuatro) === "pe" &&
+        strFormate(jogoPlayerTres) === "te")
+    ) {
+      playersWinBatalhaTres.push([playersWin[4][0], playersWin[4][1]]);
+    }
+    if (
+      (strFormate(jogoPlayerCinco) === "pa" &&
+        strFormate(jogoPlayerSeis) === "pe") ||
+      (strFormate(jogoPlayerCinco) === "te" &&
+        strFormate(jogoPlayerSeis) === "pa") ||
+      (strFormate(jogoPlayerCinco) === "pe" &&
+        strFormate(jogoPlayerSeis) === "te")
+    ) {
+      playersWinBatalhaTres.push([playersWin[5][0], playersWin[5][1]]);
+    }
+    if (
+      (strFormate(jogoPlayerSeis) === "pa" &&
+        strFormate(jogoPlayerCinco) === "pe") ||
+      (strFormate(jogoPlayerSeis) === "te" &&
+        strFormate(jogoPlayerCinco) === "pa") ||
+      (strFormate(jogoPlayerSeis) === "pe" &&
+        strFormate(jogoPlayerCinco) === "te")
+    ) {
+      playersWinBatalhaTres.push([playersWin[6][0], playersWin[6][1]]);
+    }
+
+    return playersWinBatalhaTres;
+  };
+  console.log("Vencedores da Terceira rodada: ", regrasDoJogo());
 });
 
 // Final ####################
+// Regex
