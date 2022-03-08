@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(107, 11, 43);
 }
 .container-calc--main {
     width: 432px;
@@ -77,6 +81,8 @@
     width: 53px;
     height: 45px;
     cursor: pointer;
+    text-align: center;
+    
 }
 .buttoun:hover {
     background: #D6AFAF;
@@ -103,4 +109,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 0 40px;
+}
+#buttoun-down {
+    padding: 13px;
+
 }
