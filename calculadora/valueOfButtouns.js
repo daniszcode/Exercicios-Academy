@@ -1,41 +1,43 @@
 export const allButtouns = document.querySelectorAll("#allButtouns");
 const results = document.querySelector(".results");
+let retorno;
 
 export const valueOfButtouns = () => {
   allButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
       switch (buttoun.textContent) {
         case "1":
-          results.textContent = 1;
-          break;
+          retorno = results.textContent = 1;
+          return retorno;
         case "2":
-          results.textContent = 2;
-          break;
+          retorno = results.textContent = 2;
+          return retorno;
         case "3":
-          results.textContent = 3;
-          break;
+          retorno = results.textContent = 3;
+          return retorno;
         case "4":
-          results.textContent = 4;
-          break;
+          retorno = results.textContent = 4;
+          return retorno;
         case "5":
-          results.textContent = 5;
-          break;
+          retorno = results.textContent = 5;
+          return retorno;
         case "6":
-          results.textContent = 6;
-          break;
+          retorno = results.textContent = 6;
+          return retorno;
         case "7":
-          results.textContent = 7;
-          break;
+          retorno = results.textContent = 7;
+          return retorno;
         case "8":
-          results.textContent = 8;
-          break;
+          retorno = results.textContent = 8;
+          return retorno;
         case "9":
-          results.textContent = 9;
-          break;
+          retorno = results.textContent = 9;
+          return retorno;
         case "0":
-          results.textContent = 0;
-          break;
+          retorno = results.textContent = 0;
+          return retorno;
       }
     });
   });
+  return retorno;
 };

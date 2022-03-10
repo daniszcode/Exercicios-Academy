@@ -1,13 +1,19 @@
 import { valueOfButtouns } from "./valueOfButtouns.js";
-const buttounSum = document.querySelector("#buttoun-mine");
 
+const operationsButtouns = document.querySelectorAll("#operationsButtouns");
+let calc = 0;
+
+const sum = (value = 0) => {
+  calc = calc + value;
+  console.log("calc: ", calc);
+};
 valueOfButtouns();
-// let calc = 0;
-// let public = 0;
 
-// const sum = (public) => {
-//   calc = calc + public;
-//   console.log("calc: ", calc);
-// };
-
-// buttounSum.addEventListener("click", sum(public));
+operationsButtouns.forEach((buttoun) => {
+  buttoun.addEventListener("click", function () {
+    if (buttoun.textContent === "+") {
+      console.log("++");
+      sum(valueOfButtouns());
+    }
+  });
+});
