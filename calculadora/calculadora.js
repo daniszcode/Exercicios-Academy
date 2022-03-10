@@ -1,5 +1,6 @@
 import { valueOfButtouns } from "./valueOfButtouns.js";
 valueOfButtouns();
+
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
 let calc = 0;
 
@@ -20,6 +21,7 @@ const multiply = (value = 0) => {
 
 operationsButtouns.forEach((buttoun) => {
   buttoun.addEventListener("click", function () {
+    valueOfButtouns();
     if (buttoun.textContent === "+") {
       console.log("++");
       sum(valueOfButtouns());
