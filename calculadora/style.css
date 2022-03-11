@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(107, 11, 43);
+}
+.container-calc--main {
+    width: 432px;
+    height: 432px;
+    background-color: #D6AFAF;
+    margin-inline: auto;
+    margin-top: 110px;
+    display: grid;
+    border-radius: 5px;
+
+}
+.box-up--section {
+    width: 100%;
+    height: 100%;   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 27px ;
+}
+.box-finder {
+    width: 289px;
+    height: 76px;
+    border-radius: 4px;
+    background-color: #AE7171;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+    font-size: 30pt;
+    padding: 5px;
+}
+
+.box-finder--icons{
+    display: flex;
+    width: 80%;
+    height: 25%;
+    justify-content: space-evenly;
+    margin: 5px
+}
+.math-girl {
+    width: 35px;
+    height: 34.35px;
+}
+.math-symbols {
+    width: 30px;
+    height: 30px;
+}
+.anime-baloon-girl {
+    width: 40px;
+    height: 40px;
+}
+.box-midlle--section {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5px 40px
+
+}
+.box-numbers--up {
+    display: flex;
+    flex-direction: row;
+    padding: 5px 12px;
+    gap: 12px;
+
+}
+.box-numbers--down {
+    display: flex;
+    padding: 5px 12px;
+    gap: 12px;
+}
+.box-buttoun--clean {
+    display: flex;
+}
+.buttoun {
+    background-color: #D6AFAF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 53px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 12pt;
+    
+}
+.buttoun:hover {
+    background: #D6AFAF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.buttoun--clean {
+    background-color: #D6AFAF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 65px;
+    height: 102px;
+}
+.buttoun--clean:hover {
+        background: #D6AFAF;
+        box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+.box-buttoun--clean {
+    display: flex;
+}
+.box-down--section {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 40px;
+}
+.buttoun-down {
+    background-color: #D6AFAF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    width: 53px;
+    height: 45px;
+    cursor: pointer;
+    text-align: center;
+    padding: 13px;
+}
+.buttoun-down:hover {
+    background: #D6AFAF;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.results {
+    text-align: center;
+}
