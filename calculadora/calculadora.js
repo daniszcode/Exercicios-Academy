@@ -15,13 +15,12 @@ const sub = (value = 0) => {
 };
 
 const multiply = (value = 0) => {
-  calc = calc * value;
+  calc = parseFloat(calc) * parseFloat(value);
   console.log("calc: ", calc);
 };
 
 operationsButtouns.forEach((buttoun) => {
   buttoun.addEventListener("click", function () {
-    valueOfButtouns();
     if (buttoun.textContent === "+") {
       console.log("++");
       sum(valueOfButtouns());
