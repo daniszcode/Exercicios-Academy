@@ -1,4 +1,4 @@
-import { valueOfButtouns } from "./valueOfButtouns.js";
+import { valueOfButtouns, results } from "./valueOfButtouns.js";
 valueOfButtouns();
 
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
@@ -23,6 +23,7 @@ operationsButtouns.forEach((buttoun) => {
   buttoun.addEventListener("click", function () {
     if (buttoun.textContent === "+") {
       console.log("++");
+      results.textContent = "";
       sum(valueOfButtouns());
     }
 

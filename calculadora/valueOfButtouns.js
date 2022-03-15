@@ -1,5 +1,5 @@
 export const allButtouns = document.querySelectorAll("#allButtouns");
-let results = document.querySelector(".results");
+export let results = document.querySelector(".results");
 let buttounStr;
 let arrTemp = [];
 
@@ -7,11 +7,20 @@ export const valueOfButtouns = () => {
   allButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
       results.textContent = buttoun.textContent;
-      buttounStr = Number(results.textContent);
+      buttounStr = results.textContent;
       arrTemp.push(buttounStr);
-      arrTemp[0] === buttounStr ? arrTemp.concat(buttounStr) : (arrTemp = []);
-      results.textContent = arrTemp.join("");
+
+      if (arrTemp[0] === buttounStr) {
+        arrTemp.concat(buttounStr);
+      } else if (arrTemp.includes(".") && arrTemp[0] !== buttounStr) {
+        arrTemp.concat(buttounStr);
+      } else if (arrTemp[0] !== buttounStr) {
+        arrTemp = [];
+      }
+      results.textContent = parseFloat(arrTemp.join(""));
+      console.log(parseFloat(arrTemp.join("")));
+      return parseFloat(arrTemp.join(""));
     });
   });
-  return arrTemp;
+  return parseFloat(arrTemp.join(""));
 };
