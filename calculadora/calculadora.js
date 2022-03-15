@@ -1,16 +1,12 @@
 import { valueOfButtouns, results } from "./valueOfButtouns.js";
+valueOfButtouns();
 
-let valorAtual = valueOfButtouns();
-let setValor;
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
 let calc = 0;
 
-const sum = (valorAtual, setValor) => {
-  valorAtual = valueOfButtouns();
-  valueOfButtouns(0);
-  setValor = valueOfButtouns();
+const sum = (value = 0) => {
   results.textContent = "";
-  calc = valorAtual + setValor;
+  calc = calc + value;
   console.log("calc: ", calc);
 };
 
@@ -24,15 +20,15 @@ const multiply = (value = 0) => {
   results.textContent = "";
   calc = parseFloat(calc) * parseFloat(value);
   console.log("calc: ", calc);
+  results.textContent = calc;
 };
 
 operationsButtouns.forEach((buttoun) => {
   buttoun.addEventListener("click", function () {
     if (buttoun.textContent === "+") {
       console.log("++");
-      console.log("valorAtual, setValor", valorAtual, setValor);
-
-      sum(valorAtual, setValor);
+      results.textContent = "";
+      sum(valueOfButtouns());
     }
 
     if (buttoun.textContent === "-") {
