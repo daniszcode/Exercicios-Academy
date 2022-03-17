@@ -5,7 +5,7 @@ const operationsButtouns = document.querySelectorAll("#operationsButtouns");
 let buttounStr;
 export let arrTemp = [];
 let ponto = ".";
-let valorAtual = [];
+export let valorAtual = [];
 let typewritten;
 
 export const valueOfButtouns = () => {
@@ -13,9 +13,9 @@ export const valueOfButtouns = () => {
     buttoun.addEventListener("click", function () {
       results.textContent = buttoun.textContent;
       if (results.textContent === ponto) {
-        results.textContent = arrTemp.push(ponto);
+        arrTemp.push(ponto);
       } else {
-        buttounStr = Number(results.textContent);
+        buttounStr = parseFloat(results.textContent);
         arrTemp.push(buttounStr);
       }
 
@@ -24,29 +24,25 @@ export const valueOfButtouns = () => {
       } else if (arrTemp.includes(ponto)) {
         arrTemp.concat(buttounStr) + arrTemp.concat(ponto);
       }
+
       results.textContent = parseFloat(arrTemp.join(""));
       typewritten = parseFloat(arrTemp.join(""));
-
-      console.log("Esse é o artemp: ", arrTemp);
+      valorAtual.push(buttounStr);
     });
   });
   return typewritten;
 };
 
-export const getValue = () => {
+export const setValue = () => {
   operationsButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
-      arrTemp.forEach((numero) => {
-        console.log("numero do getvalue:", numero);
-        valorAtual.push(numero);
-      });
+      console.log("arrTemp", arrTemp);
       for (let i = 0; i < arrTemp.length; i++) {
         arrTemp[i] = 0;
-        console.log("esse é o i", i, "Esse é o artemp[i]", arrTemp[i]);
       }
-      console.log("Esse é o artemp", arrTemp);
-      console.log("valoratual:", valorAtual);
     });
   });
+  console.log("valoratual:", valorAtual);
+  console.log("typewritten:", typewritten);
   return valorAtual;
 };

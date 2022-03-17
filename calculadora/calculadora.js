@@ -1,32 +1,48 @@
-import { valueOfButtouns, results, getValue } from "./valueOfButtouns.js";
+import { valueOfButtouns, results, valorAtual } from "./valueOfButtouns.js";
 valueOfButtouns();
-
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
-let calc = 0;
-let temp = 0;
 
-const sum = (value = 0) => {
+const sum = () => {
   results.textContent = "";
-
-  for (let value of getValue()) {
-    console.log("value", value);
-    calc = parseFloat(value);
-    temp = calc + parseFloat(value);
-    console.log("calc: ", calc);
-    console.log("temp: ", temp);
-  }
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0
+  );
+  results.textContent = calc;
 };
 
-const sub = (value = 0) => {
+const sub = () => {
   results.textContent = "";
-  calc = value - calc;
-  console.log("calc: ", calc);
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) =>
+      console.log(
+        "previousValue",
+        previousValue,
+        "currentValue",
+        currentValue,
+        "calc",
+        previousValue - currentValue
+      ),
+    0
+  );
+  results.textContent = calc;
 };
 
-const multiply = (value = 0) => {
+const multiply = () => {
   results.textContent = "";
-  calc = parseFloat(calc) * parseFloat(value);
-  console.log("calc: ", calc);
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) => previousValue * currentValue,
+    0
+  );
+  results.textContent = calc;
+};
+
+const divider = () => {
+  results.textContent = "";
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) => previousValue / currentValue,
+    0
+  );
   results.textContent = calc;
 };
 
@@ -40,12 +56,20 @@ operationsButtouns.forEach((buttoun) => {
 
     if (buttoun.textContent === "-") {
       console.log("--");
-      sub(valueOfButtouns());
+      results.textContent = "";
+      sub();
     }
 
     if (buttoun.textContent === "X") {
       console.log("xx");
-      multiply(valueOfButtouns());
+      results.textContent = "";
+      multiply();
+    }
+
+    if (buttoun.textContent === "/") {
+      console.log("//");
+      results.textContent = "";
+      divider();
     }
   });
 });
