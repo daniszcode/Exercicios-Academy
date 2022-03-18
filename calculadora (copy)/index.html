@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="/calculadora/assets/think.svg"
+      type="image/x-icon"
+    />
+    <title>calculadora</title>
+  </head>
+  <body>
+    <main class="container-calc--main">
+      <section class="box-up--section">
+        <div class="box-finder">
+          <span class="results"></span>
+        </div>
+        <div class="box-finder--icons">
+          <img
+            id="math-girl"
+            class="box--icons"
+            src="assets/think.svg"
+            alt="math-girl"
+          />
+          <img
+            id="math-symbols"
+            class="box--icons"
+            src="assets/mathematics.svg"
+            alt="math-symbols"
+          />
+          <img
+            id="anime-baloon-girl"
+            class="box--icons"
+            src="assets/anime.svg"
+            alt="anime-baloon-girl"
+          />
+        </div>
+      </section>
+      <section class="box-midlle--section">
+        <div>
+          <div class="box-numbers--up">
+            <button class="buttoun" id="allButtouns" class="">7</button>
+            <button class="buttoun" id="allButtouns">8</button>
+            <button class="buttoun" id="allButtouns">9</button>
+            <button class="buttoun" id="operationsButtouns">/</button>
+          </div>
+          <div class="box-numbers--down">
+            <button class="buttoun" id="allButtouns">4</button>
+            <button class="buttoun" id="allButtouns">5</button>
+            <button class="buttoun" id="allButtouns">6</button>
+            <button class="buttoun" id="operationsButtouns">X</button>
+          </div>
+        </div>
+
+        <div class="box-buttoun--clean">
+          <button class="buttoun--clean" id="allButtouns">C</button>
+        </div>
+      </section>
+      <section class="box-down--section">
+        <div>
+          <div class="box-numbers--up">
+            <buttoun class="buttoun-down" id="allButtouns">1</buttoun>
+            <buttoun class="buttoun-down" id="allButtouns">2</buttoun>
+            <buttoun class="buttoun-down" id="allButtouns">3</buttoun>
+            <buttoun class="buttoun-down" id="operationsButtouns">-</buttoun>
+          </div>
+          <div class="box-numbers--down">
+            <buttoun class="buttoun-down" id="allButtouns">0</buttoun>
+            <buttoun class="buttoun-down" id="allButtouns">.</buttoun>
+            <buttoun class="buttoun-down" id="allButtouns">%</buttoun>
+            <buttoun class="buttoun-down" id="operationsButtouns">+</buttoun>
+          </div>
+        </div>
+        <div class="box-buttoun--clean">
+          <button class="buttoun--clean" id="operationsButtouns">=</button>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="valueOfButtouns.js"></script>
+  </body>
+</html>

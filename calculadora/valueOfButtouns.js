@@ -1,4 +1,4 @@
-import { sub, sum, multiply, divider } from "./calculadora.js";
+import { sub, sum, multiply, divider, retorno } from "./calculadora.js";
 const allButtouns = document.querySelectorAll("#allButtouns");
 let results = document.querySelector(".results");
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
@@ -38,47 +38,57 @@ const valueOfButtouns = () => {
 
 valueOfButtouns();
 
-operationsButtouns.forEach((buttoun) => {
-  buttoun.addEventListener("click", function () {
-    typewritten = parseFloat(arrTemp.join(""));
-    valorAtual.push(typewritten);
-    console.log(
-      "typewritten",
-      typewritten,
-      "buttounStr",
-      buttounStr,
-      "artemp",
-      arrTemp,
-      "valoratual",
-      valorAtual
-    );
+function operations() {
+  operationsButtouns.forEach((buttoun) => {
+    buttoun.addEventListener("click", function () {
+      typewritten = parseFloat(arrTemp.join(""));
+      valorAtual.push(typewritten);
+      console.log(
+        "typewritten",
+        typewritten,
+        "buttounStr",
+        buttounStr,
+        "artemp",
+        arrTemp,
+        "valoratual",
+        valorAtual
+      );
 
-    for (let i = 0; i < arrTemp.length; i++) {
-      arrTemp[i] = 0;
-    }
+      for (let i = 0; i < arrTemp.length; i++) {
+        arrTemp[i] = 0;
+      }
 
-    if (buttoun.textContent === "+" || buttoun.textContent === "=") {
-      console.log("++");
-      results.textContent = "";
-      sum();
-    }
+      if (buttoun.textContent === "+") {
+        console.log("++");
+        results.textContent = "";
+        sum();
+      }
 
-    if (buttoun.textContent === "-" || buttoun.textContent === "=") {
-      console.log("--");
-      results.textContent = "";
-      sub();
-    }
+      if (buttoun.textContent === "-") {
+        console.log("--");
+        results.textContent = "";
+        sub();
+      }
 
-    if (buttoun.textContent === "X" || buttoun.textContent === "=") {
-      console.log("xx");
-      results.textContent = "";
-      multiply();
-    }
+      if (buttoun.textContent === "X") {
+        console.log("xx");
+        results.textContent = "";
+        multiply();
+      }
 
-    if (buttoun.textContent === "/" || buttoun.textContent === "=") {
-      console.log("//");
-      results.textContent = "";
-      divider();
-    }
+      if (buttoun.textContent === "/") {
+        console.log("//");
+        results.textContent = "";
+        divider();
+      }
+
+      if (buttoun.textContent === "=") {
+        results.textContent = retorno();
+
+        console.log("==", calc);
+      }
+    });
   });
-});
+}
+
+operations();
