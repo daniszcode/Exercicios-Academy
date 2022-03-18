@@ -1,48 +1,124 @@
-export const allButtouns = document.querySelectorAll("#allButtouns");
-export let results = document.querySelector(".results");
+const allButtouns = document.querySelectorAll("#allButtouns");
+let results = document.querySelector(".results");
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
 
 let buttounStr;
-export let arrTemp = [];
+let arrTemp = [];
 let ponto = ".";
-export let valorAtual = [];
+let valorAtual = [];
 let typewritten;
 
-export const valueOfButtouns = () => {
+const sum = () => {
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0
+  );
+  results.textContent = "";
+  results.textContent = calc;
+  console.log(calc, "calc");
+};
+
+const sub = () => {
+  results.textContent = "";
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) =>
+      console.log(
+        "previousValue",
+        previousValue,
+        "currentValue",
+        currentValue,
+        "calc",
+        previousValue - currentValue
+      ),
+    0
+  );
+  results.textContent = "";
+  results.textContent = calc;
+};
+const multiply = () => {
+  results.textContent = "";
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) => previousValue * currentValue
+  );
+
+  results.textContent = "";
+  results.textContent = calc;
+  console.log(calc, "calc");
+};
+
+const divider = () => {
+  results.textContent = "";
+  const calc = valorAtual.reduce(
+    (previousValue, currentValue) => previousValue / currentValue
+  );
+  results.textContent = calc;
+};
+//######################################################################
+
+const valueOfButtouns = () => {
   allButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
-      results.textContent = buttoun.textContent;
-      if (results.textContent === ponto) {
+      if (buttoun.textContent === ponto) {
         arrTemp.push(ponto);
       } else {
-        buttounStr = parseFloat(results.textContent);
+        buttounStr = parseFloat(buttoun.textContent);
         arrTemp.push(buttounStr);
       }
 
       if (arrTemp[0] === buttounStr && arrTemp[0] !== buttounStr) {
         arrTemp.concat(buttounStr);
       } else if (arrTemp.includes(ponto)) {
-        arrTemp.concat(buttounStr) + arrTemp.concat(ponto);
+        arrTemp.concat(buttounStr, ponto);
       }
 
       results.textContent = parseFloat(arrTemp.join(""));
-      typewritten = parseFloat(arrTemp.join(""));
-      valorAtual.push(buttounStr);
     });
   });
-  return typewritten;
 };
 
-export const setValue = () => {
-  operationsButtouns.forEach((buttoun) => {
-    buttoun.addEventListener("click", function () {
-      console.log("arrTemp", arrTemp);
-      for (let i = 0; i < arrTemp.length; i++) {
-        arrTemp[i] = 0;
-      }
-    });
+valueOfButtouns();
+
+operationsButtouns.forEach((buttoun) => {
+  buttoun.addEventListener("click", function () {
+    typewritten = parseFloat(arrTemp.join(""));
+    valorAtual.push(typewritten);
+    console.log(
+      "typewritten",
+      typewritten,
+      "buttounStr",
+      buttounStr,
+      "artemp",
+      arrTemp,
+      "valoratual",
+      valorAtual
+    );
+
+    for (let i = 0; i < arrTemp.length; i++) {
+      arrTemp[i] = 0;
+    }
+
+    if (buttoun.textContent === "+") {
+      console.log("++");
+      results.textContent = "";
+      sum();
+    }
+
+    if (buttoun.textContent === "-") {
+      console.log("--");
+      results.textContent = "";
+      sub();
+    }
+
+    if (buttoun.textContent === "X") {
+      console.log("xx");
+      results.textContent = "";
+      multiply();
+    }
+
+    if (buttoun.textContent === "/") {
+      console.log("//");
+      results.textContent = "";
+      divider();
+    }
   });
-  console.log("valoratual:", valorAtual);
-  console.log("typewritten:", typewritten);
-  return valorAtual;
-};
+});
