@@ -1,3 +1,4 @@
+import { sub, sum, multiply, divider } from "./calculadora.js";
 const allButtouns = document.querySelectorAll("#allButtouns");
 let results = document.querySelector(".results");
 const operationsButtouns = document.querySelectorAll("#operationsButtouns");
@@ -5,55 +6,8 @@ const operationsButtouns = document.querySelectorAll("#operationsButtouns");
 let buttounStr;
 let arrTemp = [];
 let ponto = ".";
-let valorAtual = [];
+export let valorAtual = [];
 let typewritten;
-
-const sum = () => {
-  const calc = valorAtual.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    0
-  );
-  results.textContent = "";
-  results.textContent = calc;
-  console.log(calc, "calc");
-};
-
-const sub = () => {
-  results.textContent = "";
-  const calc = valorAtual.reduce(
-    (previousValue, currentValue) =>
-      console.log(
-        "previousValue",
-        previousValue,
-        "currentValue",
-        currentValue,
-        "calc",
-        previousValue - currentValue
-      ),
-    0
-  );
-  results.textContent = "";
-  results.textContent = calc;
-};
-const multiply = () => {
-  results.textContent = "";
-  const calc = valorAtual.reduce(
-    (previousValue, currentValue) => previousValue * currentValue
-  );
-
-  results.textContent = "";
-  results.textContent = calc;
-  console.log(calc, "calc");
-};
-
-const divider = () => {
-  results.textContent = "";
-  const calc = valorAtual.reduce(
-    (previousValue, currentValue) => previousValue / currentValue
-  );
-  results.textContent = calc;
-};
-//######################################################################
 
 const valueOfButtouns = () => {
   allButtouns.forEach((buttoun) => {
@@ -71,7 +25,13 @@ const valueOfButtouns = () => {
         arrTemp.concat(buttounStr, ponto);
       }
 
-      results.textContent = parseFloat(arrTemp.join(""));
+      if (buttoun.textContent === "C") {
+        results.textContent = "";
+        arrTemp = [];
+        valueOfButtouns();
+      } else {
+        results.textContent = parseFloat(arrTemp.join(""));
+      }
     });
   });
 };
@@ -97,25 +57,25 @@ operationsButtouns.forEach((buttoun) => {
       arrTemp[i] = 0;
     }
 
-    if (buttoun.textContent === "+") {
+    if (buttoun.textContent === "+" || buttoun.textContent === "=") {
       console.log("++");
       results.textContent = "";
       sum();
     }
 
-    if (buttoun.textContent === "-") {
+    if (buttoun.textContent === "-" || buttoun.textContent === "=") {
       console.log("--");
       results.textContent = "";
       sub();
     }
 
-    if (buttoun.textContent === "X") {
+    if (buttoun.textContent === "X" || buttoun.textContent === "=") {
       console.log("xx");
       results.textContent = "";
       multiply();
     }
 
-    if (buttoun.textContent === "/") {
+    if (buttoun.textContent === "/" || buttoun.textContent === "=") {
       console.log("//");
       results.textContent = "";
       divider();
