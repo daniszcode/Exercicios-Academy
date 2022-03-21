@@ -13,11 +13,6 @@ const valueOfButtouns = () => {
     buttoun.addEventListener("click", function () {
       if (buttoun.textContent === ponto) {
         arrTemp.push(ponto);
-      } else if (buttoun.textContent === "C") {
-        results.textContent = "";
-        arrTemp = [];
-        typewritten = 0;
-        location.reload();
       } else {
         buttounStr = parseFloat(buttoun.textContent);
         arrTemp.push(buttounStr);
@@ -36,7 +31,7 @@ const valueOfButtouns = () => {
 
 valueOfButtouns();
 
-function operations() {
+const operations = () => {
   operationsButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
       typewritten = parseFloat(arrTemp.join(""));
@@ -56,51 +51,64 @@ function operations() {
         arrTemp[i] = 0;
       }
 
-      preventValue = valorAtual.reduce((preventValue, currentValue) => {
+      let calc = 0;
+
+      valorAtual.reduce((preventValue, currentValue) => {
         if (buttoun.textContent === "+") {
           console.log("++");
           results.textContent = "";
-          console.log(
-            "preventValue",
-            preventValue,
-            "currentValue",
-            currentValue
+          return (
+            (calc =
+              (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) /
+              10),
+            calc
           );
-          preventValue =
-            (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) /
-            10;
         }
+
         if (buttoun.textContent === "-") {
           console.log("--");
           results.textContent = "";
-          preventValue =
-            (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) /
-            10;
+
+          return (
+            (calc =
+              (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) /
+              10),
+            calc
+          );
         }
+
         if (buttoun.textContent === "X") {
           console.log("xx");
           results.textContent = "";
 
-          preventValue =
-            (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
-            100;
+          return (
+            (calc =
+              (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
+              100),
+            calc
+          );
         }
+
         if (buttoun.textContent === "/") {
           console.log("//");
           results.textContent = "";
 
-          preventValue =
-            parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
-        } else if (buttoun.textContent === "=") {
-          results.textContent = preventValue;
+          return (
+            (calc =
+              parseFloat(preventValue * 10) / parseFloat(currentValue * 10)),
+            calc
+          );
+        } else if (buttoun.textContent === "C") {
+          return (preventValue = 0), (currentValue = 0);
         }
-        console.log(preventValue, "preventValue;");
-        results.textContent = preventValue;
-        return preventValue;
       });
-      console.log(preventValue, "calc");
+      console.log("preventValue", calc);
+      results.textContent = calc;
+      if (buttoun.textContent === "=") {
+        results.textContent = calc;
+      }
     });
   });
-}
+};
 
 operations();
