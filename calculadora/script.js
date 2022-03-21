@@ -7,7 +7,7 @@ let buttounStr;
 let arrTemp = [];
 let ponto = ".";
 let typewritten;
-
+let arrButtoun = [];
 const valueOfButtouns = () => {
   allButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
@@ -36,77 +36,84 @@ const operations = () => {
     buttoun.addEventListener("click", function () {
       typewritten = parseFloat(arrTemp.join(""));
       valorAtual.push(typewritten);
-      console.log(
-        "typewritten",
-        typewritten,
-        "buttounStr",
-        buttounStr,
-        "artemp",
-        arrTemp,
-        "valoratual",
-        valorAtual
-      );
+      // console.log(
+      //   "typewritten",
+      //   typewritten,
+      //   "buttounStr",
+      //   buttounStr,
+      //   "artemp",
+      //   arrTemp,
+      //   "valoratual",
+      //   valorAtual
+      // );
+      arrButtoun.push(buttoun.textContent);
 
       for (let i = 0; i < arrTemp.length; i++) {
         arrTemp[i] = 0;
       }
 
-      let calc = 0;
+      arr = [];
 
-      valorAtual.reduce((preventValue, currentValue) => {
+      let preventValue = valorAtual.reduce((preventValue, currentValue) => {
         if (buttoun.textContent === "+") {
           console.log("++");
-          results.textContent = "";
           return (
-            (calc =
-              (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) /
-              10),
-            calc
+            (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) / 10
           );
         }
-
         if (buttoun.textContent === "-") {
           console.log("--");
-          results.textContent = "";
-
           return (
-            (calc =
-              (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) /
-              10),
-            calc
+            (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) / 10
           );
         }
-
         if (buttoun.textContent === "X") {
           console.log("xx");
-          results.textContent = "";
 
           return (
-            (calc =
-              (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
-              100),
-            calc
+            (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
+            100
           );
         }
 
         if (buttoun.textContent === "/") {
           console.log("//");
-          results.textContent = "";
+          return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
+        }
 
-          return (
-            (calc =
-              parseFloat(preventValue * 10) / parseFloat(currentValue * 10)),
-            calc
-          );
-        } else if (buttoun.textContent === "C") {
+        if (buttoun.textContent === "C") {
           return (preventValue = 0), (currentValue = 0);
         }
+
+        if (arrButtoun.includes("+") && arrButtoun.includes("=")) {
+          return (
+            (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) / 10
+          );
+        }
+
+        if (arrButtoun.includes("-") && arrButtoun.includes("=")) {
+          return (
+            (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) / 10
+          );
+        }
+
+        if (arrButtoun.includes("/") && arrButtoun.includes("=")) {
+          return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
+        }
+        if (arrButtoun.includes("X") && arrButtoun.includes("=")) {
+          return (
+            (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
+            100
+          );
+        }
       });
-      console.log("preventValue", calc);
-      results.textContent = calc;
-      if (buttoun.textContent === "=") {
-        results.textContent = calc;
+
+      if (valorAtual.length >= 2) {
+        valorAtual.splice(0, 2, preventValue);
       }
+
+      // console.log(arrButtoun);
+      results.textContent = preventValue;
     });
   });
 };
