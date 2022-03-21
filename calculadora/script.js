@@ -18,9 +18,7 @@ const valueOfButtouns = () => {
         arrTemp.push(buttounStr);
       }
 
-      if (arrTemp[0] === buttounStr && arrTemp[0] !== buttounStr) {
-        arrTemp.concat(buttounStr);
-      } else if (arrTemp.includes(ponto)) {
+      if (arrTemp.includes(ponto)) {
         arrTemp.concat(buttounStr, ponto);
       }
 
