@@ -5,7 +5,7 @@ Projeto desenvolvido durante treinamento na Academy-Creditas.
 
 
 
-## Durante sua criação, utilizei
+## Utilizei: 
 
 **Arrays:** métodos de manipulação (push, join, splice, etc)
 
