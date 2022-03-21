@@ -17,5 +17,5 @@ Projeto desenvolvido durante treinamento na Academy-Creditas.
 
 
 ## 🔗 Links
-[![my_portifolio](https://img.shields.io/badge/Calculadora_Acesse_aqui-000?style=for-the-badge&logo=ko-fi&logoColor=rose)](https://khttps://exercicios-academy.vercel.app/)
+[![my_portifolio](https://img.shields.io/badge/Calculadora_Acesse_aqui-000?style=for-the-badge&logo=ko-fi&logoColor=rose)](https://https://exercicios-academy.vercel.app/)
 
