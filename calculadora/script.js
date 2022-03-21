@@ -79,8 +79,10 @@ const operations = () => {
           return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
         }
 
-        if (buttoun.textContent === "C") {
-          return (preventValue = 0), (currentValue = 0);
+        if (arrButtoun.includes("C")) {
+          console.log("C");
+
+          valorAtual = [];
         }
 
         if (arrButtoun.includes("+") && arrButtoun.includes("=")) {
@@ -111,6 +113,7 @@ const operations = () => {
       }
 
       // console.log(arrButtoun);
+      // console.log(valorAtual);
       results.textContent = preventValue;
     });
   });
