@@ -35,16 +35,17 @@ const operations = () => {
       typewritten = parseFloat(arrTemp.join(""));
       typewritten !== 0 ? valorAtual.push(typewritten) : false;
 
-      // console.log(
-      //   "typewritten",
-      //   typewritten,
-      //   "buttounStr",
-      //   buttounStr,
-      //   "artemp",
-      //   arrTemp,
-      //   "valoratual",
-      //   valorAtual
-      // );
+      //console.log(
+      // "typewritten",
+      // typewritten,
+      // "buttounStr",
+      // buttounStr,
+      // "artemp",
+      // arrTemp,
+      // "valoratual",
+      //valorAtual
+      //);
+
       arrButtoun.push(buttoun.textContent);
 
       for (let i = 0; i < arrTemp.length; i++) {
@@ -100,18 +101,20 @@ const operations = () => {
           );
         }
       });
-      if (valorAtual.length >= 2) {
-        valorAtual.splice(0, 2, preventValue);
-      }
       if (arrButtoun.includes("C")) {
         console.log("C");
         valorAtual.splice(0, 2);
         preventValue = 0;
         results.textContent = "0";
+        arrButtoun.pop();
       }
+      if (valorAtual.length >= 2) {
+        valorAtual.splice(0, 2, preventValue);
+      }
+
       // console.log(arrButtoun);
-      // console.log("valorAtual", valorAtual);
-      // console.log("preventValuel", preventValue);
+      //console.log("valorAtual", valorAtual);
+      //console.log("preventValuel", preventValue);
 
       results.textContent = parseFloat(preventValue);
     });
