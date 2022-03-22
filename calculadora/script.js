@@ -33,24 +33,23 @@ const operations = () => {
   operationsButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
       typewritten = parseFloat(arrTemp.join(""));
-      valorAtual.push(typewritten);
-      // console.log(
-      //   "typewritten",
-      //   typewritten,
-      //   "buttounStr",
-      //   buttounStr,
-      //   "artemp",
-      //   arrTemp,
-      //   "valoratual",
-      //   valorAtual
-      // );
+      typewritten !== 0 ? valorAtual.push(typewritten) : false;
+
+      console.log(
+        "typewritten",
+        typewritten,
+        "buttounStr",
+        buttounStr,
+        "artemp",
+        arrTemp,
+        "valoratual",
+        valorAtual
+      );
       arrButtoun.push(buttoun.textContent);
 
       for (let i = 0; i < arrTemp.length; i++) {
         arrTemp[i] = 0;
       }
-
-      arr = [];
 
       let preventValue = valorAtual.reduce((preventValue, currentValue) => {
         if (buttoun.textContent === "+") {
@@ -78,7 +77,6 @@ const operations = () => {
           console.log("//");
           return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
         }
-
         if (arrButtoun.includes("C")) {
           console.log("C");
 
@@ -107,13 +105,14 @@ const operations = () => {
           );
         }
       });
-
       if (valorAtual.length >= 2) {
         valorAtual.splice(0, 2, preventValue);
       }
 
-      // console.log(arrButtoun);
-      // console.log(valorAtual);
+      console.log(arrButtoun);
+      console.log("valorAtual", valorAtual);
+      console.log("preventValuel", preventValue);
+
       results.textContent = preventValue;
     });
   });
