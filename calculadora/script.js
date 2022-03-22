@@ -35,17 +35,6 @@ const operations = () => {
       typewritten = parseFloat(arrTemp.join(""));
       typewritten !== 0 ? valorAtual.push(typewritten) : false;
 
-      //console.log(
-      // "typewritten",
-      // typewritten,
-      // "buttounStr",
-      // buttounStr,
-      // "artemp",
-      // arrTemp,
-      // "valoratual",
-      //valorAtual
-      //);
-
       arrButtoun.push(buttoun.textContent);
 
       for (let i = 0; i < arrTemp.length; i++) {
@@ -54,43 +43,34 @@ const operations = () => {
 
       let preventValue = valorAtual.reduce((preventValue, currentValue) => {
         if (buttoun.textContent === "+") {
-          console.log("++");
           return (
             (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) / 10
           );
         }
         if (buttoun.textContent === "-") {
-          console.log("--");
           return (
             (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) / 10
           );
         }
         if (buttoun.textContent === "X") {
-          console.log("xx");
-
           return (
             (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
             100
           );
         }
-
         if (buttoun.textContent === "/") {
-          console.log("//");
           return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
         }
-
         if (arrButtoun.includes("+") && arrButtoun.includes("=")) {
           return (
             (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) / 10
           );
         }
-
         if (arrButtoun.includes("-") && arrButtoun.includes("=")) {
           return (
             (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) / 10
           );
         }
-
         if (arrButtoun.includes("/") && arrButtoun.includes("=")) {
           return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
         }
@@ -102,7 +82,6 @@ const operations = () => {
         }
       });
       if (arrButtoun.includes("C")) {
-        console.log("C");
         valorAtual.splice(0, 2);
         preventValue = 0;
         results.textContent = "0";
@@ -111,10 +90,6 @@ const operations = () => {
       if (valorAtual.length >= 2) {
         valorAtual.splice(0, 2, preventValue);
       }
-
-      // console.log(arrButtoun);
-      //console.log("valorAtual", valorAtual);
-      //console.log("preventValuel", preventValue);
 
       results.textContent = parseFloat(preventValue);
     });
