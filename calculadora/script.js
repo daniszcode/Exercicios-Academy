@@ -3,26 +3,31 @@ const operationsButtouns = document.querySelectorAll("#operationsButtouns");
 
 let results = document.querySelector(".results");
 let valorAtual = [];
-let buttounStr;
-let arrTemp = [];
+let buttonValue;
+let arrayTemporario = [];
 let ponto = ".";
 let typewritten;
-let arrButtoun = [];
+let arrayButtounOperations = [];
+
 const valueOfButtouns = () => {
   allButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
       if (buttoun.textContent === ponto) {
-        arrTemp.push(ponto);
+        arrayTemporario.push(ponto);
       } else {
-        buttounStr = parseFloat(buttoun.textContent);
-        arrTemp.push(buttounStr);
+        buttonValue = parseFloat(buttoun.textContent);
+        arrayTemporario.push(buttonValue);
       }
 
-      if (arrTemp.includes(ponto)) {
-        arrTemp.concat(buttounStr, ponto);
+      if (arrayTemporario.includes(ponto)) {
+        arrayTemporario.concat(buttonValue, ponto);
       }
 
-      results.textContent = parseFloat(arrTemp.join(""));
+      if (results.textContent.length > 11) {
+        results.textContent = "Erro";
+      } else {
+        results.textContent = parseFloat(arrayTemporario.join(""));
+      }
     });
   });
 };
@@ -32,68 +37,83 @@ valueOfButtouns();
 const operations = () => {
   operationsButtouns.forEach((buttoun) => {
     buttoun.addEventListener("click", function () {
-      typewritten = parseFloat(arrTemp.join(""));
+      typewritten = parseFloat(arrayTemporario.join(""));
       typewritten !== 0 ? valorAtual.push(typewritten) : false;
 
-      arrButtoun.push(buttoun.textContent);
+      arrayButtounOperations.push(buttoun.textContent);
 
-      for (let i = 0; i < arrTemp.length; i++) {
-        arrTemp[i] = 0;
+      for (let i = 0; i < arrayTemporario.length; i++) {
+        arrayTemporario[i] = 0;
       }
 
-      let preventValue = valorAtual.reduce((preventValue, currentValue) => {
+      let previousValue = valorAtual.reduce((previousValue, currentValue) => {
         if (buttoun.textContent === "+") {
           return (
-            (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) / 10
+            (parseFloat(previousValue * 10) + parseFloat(currentValue * 10)) /
+            10
           );
         }
         if (buttoun.textContent === "-") {
           return (
-            (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) / 10
+            (parseFloat(previousValue * 10) - parseFloat(currentValue * 10)) /
+            10
           );
         }
         if (buttoun.textContent === "X") {
           return (
-            (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
+            (parseFloat(previousValue * 10) * parseFloat(currentValue * 10)) /
             100
           );
         }
         if (buttoun.textContent === "/") {
-          return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
+          return parseFloat(previousValue * 10) / parseFloat(currentValue * 10);
         }
-        if (arrButtoun.includes("+") && arrButtoun.includes("=")) {
+        if (
+          arrayButtounOperations.includes("+") &&
+          arrayButtounOperations.includes("=")
+        ) {
           return (
-            (parseFloat(preventValue * 10) + parseFloat(currentValue * 10)) / 10
+            (parseFloat(previousValue * 10) + parseFloat(currentValue * 10)) /
+            10
           );
         }
-        if (arrButtoun.includes("-") && arrButtoun.includes("=")) {
+        if (
+          arrayButtounOperations.includes("-") &&
+          arrayButtounOperations.includes("=")
+        ) {
           return (
-            (parseFloat(preventValue * 10) - parseFloat(currentValue * 10)) / 10
+            (parseFloat(previousValue * 10) - parseFloat(currentValue * 10)) /
+            10
           );
         }
-        if (arrButtoun.includes("/") && arrButtoun.includes("=")) {
-          return parseFloat(preventValue * 10) / parseFloat(currentValue * 10);
+        if (
+          arrayButtounOperations.includes("/") &&
+          arrayButtounOperations.includes("=")
+        ) {
+          return parseFloat(previousValue * 10) / parseFloat(currentValue * 10);
         }
-        if (arrButtoun.includes("X") && arrButtoun.includes("=")) {
+        if (
+          arrayButtounOperations.includes("X") &&
+          arrayButtounOperations.includes("=")
+        ) {
           return (
-            (parseFloat(preventValue * 10) * parseFloat(currentValue * 10)) /
+            (parseFloat(previousValue * 10) * parseFloat(currentValue * 10)) /
             100
           );
         }
       });
-      if (arrButtoun.includes("C")) {
+
+      if (arrayButtounOperations.includes("C")) {
         valorAtual.splice(0, 2);
-        preventValue = 0;
+        previousValue = 0;
         results.textContent = "0";
-        arrButtoun.pop();
+        arrayButtounOperations.pop();
       }
       if (valorAtual.length >= 2) {
-        valorAtual.splice(0, 2, preventValue);
+        valorAtual.splice(0, 2, previousValue);
       }
-
-      results.textContent = parseFloat(preventValue);
+      results.textContent = parseFloat(previousValue);
     });
   });
 };
-
 operations();
