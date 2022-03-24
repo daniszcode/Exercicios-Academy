@@ -6,7 +6,7 @@ function removerAcentos(newStringComAcento) {
 
 function palindrome(palavra) {
   const strMinuscula = removerAcentos(palavra);
-  const splits = strMinuscula.split("", strMinuscula.lenth);
+  const splits = strMinuscula.split("", strMinuscula.length);
   const strReverse = splits.reverse().join("");
 
   return strReverse === strMinuscula ? true : false;
